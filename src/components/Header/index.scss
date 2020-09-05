@@ -1,0 +1,12 @@
+@import "../../style/variables";
+
+header {
+  display: flex;
+  align-items: center;
+  background-color: grey;
+  height: $header-height;
+
+  h1 {
+    margin: 0;
+  }
+}
