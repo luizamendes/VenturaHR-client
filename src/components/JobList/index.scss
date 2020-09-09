@@ -1,0 +1,32 @@
+@import "../../style/variables";
+
+.job-list {
+  & h3 {
+    margin-top: 0;
+  }
+
+  &__header {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+  }
+
+  &__row {
+    display: flex;
+    border: 1px solid black;
+    padding: 0.5rem;
+    text-decoration: none;
+    color: inherit;
+
+    & div {
+      //   width: 33%;
+      max-width: 30%;
+      flex-grow: 1;
+      flex-basis: 0;
+
+      &:nth-child(2) {
+        max-width: 50%;
+        flex-grow: 2;
+      }
+    }
+  }
+}
