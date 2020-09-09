@@ -1,4 +1,6 @@
+@import "../../style/variables";
+
 main {
-  padding: 2rem;
+  padding: $app-padding;
   flex-grow: 1;
 }
