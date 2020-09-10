@@ -1,13 +1,13 @@
 import React, { useState } from "react";
+import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
-import "./index.scss";
 
 export const Register = () => {
   const [accountType, setAccountType] = useState("candidate");
 
   return (
     <>
-      <h2>Criar conta</h2>
+      <h2 style={{ marginTop: "0" }}>Criar conta</h2>
       <form>
         <Input labelText="Nome" type="text" />
         <Input labelText="Endereço" type="text" />
@@ -29,6 +29,7 @@ export const Register = () => {
             <Input labelText="CNPJ" />
           </div>
         )}
+        <Button buttonText="Criar" />
       </form>
     </>
   );
