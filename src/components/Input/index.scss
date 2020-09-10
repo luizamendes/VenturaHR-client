@@ -11,4 +11,13 @@
   border-radius: 5px;
   padding: 0.5rem;
   margin: 0.5rem 0;
+
+  &__radio-group {
+    display: flex;
+    margin-top: 0.5rem;
+
+    > div {
+      margin-right: 0.5rem;
+    }
+  }
 }
