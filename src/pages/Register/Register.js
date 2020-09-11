@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
+import { PageTitle } from "../../components/PageTitle";
 
 export const Register = () => {
   const [accountType, setAccountType] = useState("candidate");
 
   return (
     <>
-      <h2 style={{ marginTop: "0" }}>Criar conta</h2>
+      <PageTitle title="Criar conta" />
       <form>
         <Input labelText="Nome" type="text" />
         <Input labelText="Endereço" type="text" />
