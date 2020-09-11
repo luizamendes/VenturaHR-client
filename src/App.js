@@ -8,6 +8,8 @@ import "./App.scss";
 import { Dashboard } from "./pages/Dashboard";
 import { Home } from "./pages/Home";
 import { Register } from "./pages/Register";
+import { OpenPosition } from "./pages/OpenPosition";
+import { NotFound } from "./pages/NotFound";
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
             <Route exact path="/" component={Home} />
             <Route exact path="/registro" component={Register} />
             <Route exact path="/dashboard" component={Dashboard} />
+            <Route exact path="/cadastrar-vaga" component={OpenPosition} />
+            <Route path="*" component={NotFound} />
           </Switch>
         </Main>
         <Footer />
