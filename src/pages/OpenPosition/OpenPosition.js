@@ -20,6 +20,7 @@ export const OpenPosition = () => {
         <Input labelText="Data limite" type="text" />
 
         <p>Critérios</p>
+        <div className="new-criteria"></div>
 
         <Button buttonText="Publicar vaga" />
       </form>

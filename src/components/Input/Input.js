@@ -2,8 +2,7 @@ import React from "react";
 import "./index.scss";
 
 export const Input = ({ labelText, options, ...props }) => {
-  console.log("Input -> props", props);
-  const { type } = props;
+  const { type, name } = props;
 
   return (
     <label className="label">
@@ -17,7 +16,7 @@ export const Input = ({ labelText, options, ...props }) => {
                   {...props}
                   type="radio"
                   id={option}
-                  name={labelText}
+                  name={name}
                   value={option}
                   defaultChecked={index === 0}
                 />

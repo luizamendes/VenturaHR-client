@@ -14,7 +14,7 @@ export const Authentication = () => {
       </div>
       <div className="authentication__register">
         <h3>Ainda não possuo conta</h3>
-        <Button buttonText="Criar conta" />
+        <Button link="/registro" buttonText="Criar conta" />
       </div>
     </div>
   );
