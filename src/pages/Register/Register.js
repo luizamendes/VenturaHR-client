@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
 import { PageTitle } from "../../components/PageTitle";
@@ -17,6 +18,7 @@ export const Register = () => {
     cnpj: "",
     companyName: "",
   });
+  const history = useHistory();
 
   const onChange = (e) => {
     const { value, name } = e.target;
@@ -29,7 +31,10 @@ export const Register = () => {
     e.preventDefault();
 
     try {
-      await registerUser(user);
+      const { data } = await registerUser(user);
+      const { token } = data;
+      history.push("/dashboard");
+      console.log(token);
     } catch (error) {
       // error
     }

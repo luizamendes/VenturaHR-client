@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { Button } from "../Button";
 import { Input } from "../Input";
 import { login } from "../../api/login";
@@ -6,6 +7,7 @@ import "./index.scss";
 
 export const Authentication = () => {
   const [user, setUser] = useState({ email: "", password: "" });
+  const history = useHistory();
 
   const onChange = (e) => {
     const { name, value } = e.target;
@@ -21,9 +23,9 @@ export const Authentication = () => {
       const { data } = await login(email, password);
       const { token } = data;
       console.log(token);
+      history.push("/dashboard");
     } catch (error) {
       console.log(error.response.status);
-      // do something
     }
   };
 
