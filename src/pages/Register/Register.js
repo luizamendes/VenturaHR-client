@@ -20,7 +20,7 @@ export const Register = () => {
 
   const onChange = (e) => {
     const { value, name } = e.target;
-    const newUser = user;
+    const newUser = { ...user };
     newUser[name] = value;
     setUser({ ...newUser });
   };
