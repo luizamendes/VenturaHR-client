@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
 import { PageTitle } from "../../components/PageTitle";
 import { registerUser } from "../../api/user";
+import { StoreContext } from "../../store";
 
 export const Register = () => {
   const [user, setUser] = useState({
@@ -19,6 +20,7 @@ export const Register = () => {
     companyName: "",
   });
   const history = useHistory();
+  const [, dispatch] = useContext(StoreContext);
 
   const onChange = (e) => {
     const { value, name } = e.target;
@@ -32,9 +34,11 @@ export const Register = () => {
 
     try {
       const { data } = await registerUser(user);
-      const { token } = data;
+      const { user: loggedUser } = data;
+
+      dispatch({ type: "SET_USER", payload: loggedUser });
+      localStorage.setItem("user", loggedUser.name);
       history.push("/dashboard");
-      console.log(token);
     } catch (error) {
       // error
     }

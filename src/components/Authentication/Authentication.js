@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { Button } from "../Button";
 import { Input } from "../Input";
 import { login } from "../../api/login";
+import { StoreContext } from "../../store";
 import "./index.scss";
 
 export const Authentication = () => {
   const [user, setUser] = useState({ email: "", password: "" });
   const history = useHistory();
+  const [, dispatch] = useContext(StoreContext);
 
   const onChange = (e) => {
     const { name, value } = e.target;
@@ -21,8 +23,10 @@ export const Authentication = () => {
     const { email, password } = user;
     try {
       const { data } = await login(email, password);
-      const { token } = data;
-      console.log(token);
+      const { user: loggedUser } = data;
+
+      dispatch({ type: "SET_USER", payload: loggedUser });
+      localStorage.setItem("user", loggedUser.name);
       history.push("/dashboard");
     } catch (error) {
       console.log(error.response.status);

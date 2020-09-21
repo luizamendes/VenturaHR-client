@@ -1,11 +1,12 @@
 @import "../../style/variables";
 
-header {
+.header {
   display: flex;
   align-items: center;
   background-color: grey;
   height: $header-height;
   padding: 0 $app-padding;
+  justify-content: space-between;
 
   h1 {
     margin: 0;
@@ -14,5 +15,11 @@ header {
   a {
     color: inherit;
     text-decoration: none;
+  }
+
+  &__greetings {
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
   }
 }
