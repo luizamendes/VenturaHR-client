@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
+import { NewCriteriaLine } from "../../components/NewCriteriaLine";
 import { PageTitle } from "../../components/PageTitle";
 import "./index.scss";
 
@@ -9,7 +10,7 @@ export const OpenPosition = () => {
     <>
       <PageTitle title="Criar vaga" />
       <form>
-        <p>Descrição</p>
+        <h3>Descrição</h3>
         <Input labelText="Cargo" type="text" />
         <Input labelText="Descrição" type="text" />
         <Input labelText="Empresa" type="text" />
@@ -19,9 +20,8 @@ export const OpenPosition = () => {
         <Input labelText="Período de contratação" type="text" />
         <Input labelText="Data limite" type="text" />
 
-        <p>Critérios</p>
-        <div className="new-criteria"></div>
-
+        <h3>Critérios</h3>
+        <NewCriteriaLine />
         <Button buttonText="Publicar vaga" />
       </form>
     </>
