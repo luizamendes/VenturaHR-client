@@ -5,17 +5,15 @@ import { generateId } from "../../utils";
 import "./index.scss";
 
 export const NewCriteriaLine = () => {
-  const [criteria, setCriteria] = useState({
+  const [criteria] = useState({
     id: generateId(),
     name: "",
     description: "",
-    profile: "",
-    weigth: "",
+    profile: "1",
+    weigth: "1",
   });
 
   const [criteriaList, setCriteriaList] = useState([criteria]);
-
-  console.log("NewCriteriaLine -> criteriaList", criteriaList);
 
   const handleAddLine = (e) => {
     e.preventDefault();
@@ -24,8 +22,8 @@ export const NewCriteriaLine = () => {
       id: generateId(),
       name: "",
       description: "",
-      profile: "",
-      weigth: "",
+      profile: 1,
+      weigth: 3,
     });
     setCriteriaList(newCriteriaList);
   };
@@ -46,7 +44,7 @@ export const NewCriteriaLine = () => {
 
   const renderCriteriaLine = ({ id, name, description, profile, weigth }) => {
     return (
-      <tr className="new-criteria__line">
+      <tr key={id} className="new-criteria__line">
         <td>
           <Input value={name} name={`name-${id}`} onChange={onChange} />
         </td>
@@ -58,7 +56,12 @@ export const NewCriteriaLine = () => {
           />
         </td>
         <td>
-          <select className="select" onChange={onChange} name={`profile-${id}`}>
+          <select
+            defaultValue={profile}
+            className="select"
+            onChange={onChange}
+            name={`profile-${id}`}
+          >
             <option>1</option>
             <option>2</option>
             <option>3</option>
@@ -67,7 +70,12 @@ export const NewCriteriaLine = () => {
           </select>
         </td>
         <td>
-          <select className="select" onChange={onChange} name={`weigth-${id}`}>
+          <select
+            defaultValue={weigth}
+            className="select"
+            onChange={onChange}
+            name={`weigth-${id}`}
+          >
             <option>1</option>
             <option>2</option>
             <option>3</option>
