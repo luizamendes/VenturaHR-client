@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 const initialState = {
   user: {
     name: localStorage.getItem("user") || "",
+    authToken: localStorage.getItem("tkn") || "",
   },
 };
 

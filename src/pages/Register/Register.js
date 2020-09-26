@@ -34,10 +34,11 @@ export const Register = () => {
 
     try {
       const { data } = await registerUser(user);
-      const { user: loggedUser } = data;
+      const { user: loggedUser, token } = data;
 
       dispatch({ type: "SET_USER", payload: loggedUser });
       localStorage.setItem("user", loggedUser.name);
+      localStorage.setItem("tkn", token);
       history.push("/dashboard");
     } catch (error) {
       // error

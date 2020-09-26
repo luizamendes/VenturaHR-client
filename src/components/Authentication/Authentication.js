@@ -23,10 +23,11 @@ export const Authentication = () => {
     const { email, password } = user;
     try {
       const { data } = await login(email, password);
-      const { user: loggedUser } = data;
+      const { user: loggedUser, token } = data;
 
       dispatch({ type: "SET_USER", payload: loggedUser });
       localStorage.setItem("user", loggedUser.name);
+      localStorage.setItem("tkn", token);
       history.push("/dashboard");
     } catch (error) {
       console.log(error.response.status);

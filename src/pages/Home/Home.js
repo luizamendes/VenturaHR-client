@@ -9,9 +9,9 @@ import "./index.scss";
 export const Home = () => {
   const [{ user }] = useContext(StoreContext);
   const history = useHistory();
-  const arrUser = Object.keys(user);
+  const arrUser = Object.entries(user);
 
-  if (arrUser.length) {
+  if (arrUser[0] === "name" && !arrUser[1]) {
     history.push("/dashboard");
   }
 

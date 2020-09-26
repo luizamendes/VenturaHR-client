@@ -3,6 +3,9 @@ import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
 import { NewCriteriaLine } from "../../components/NewCriteriaLine";
 import { PageTitle } from "../../components/PageTitle";
+import { generateId } from "../../utils";
+import { createJob } from "../../api/job";
+
 import "./index.scss";
 
 export const OpenPosition = () => {
@@ -16,7 +19,15 @@ export const OpenPosition = () => {
     contractTime: "",
     jobDue: "",
   });
-  const [criteriaList, setCriteriaList] = useState([]);
+  const [criteria] = useState({
+    id: generateId(),
+    name: "",
+    description: "",
+    profile: "1",
+    weigth: "1",
+  });
+  const [criteriaList, setCriteriaList] = useState([criteria]);
+  console.log("OpenPosition -> criteriaList", criteriaList);
 
   const {
     name,
@@ -36,10 +47,25 @@ export const OpenPosition = () => {
     setJob({ ...newJob });
   };
 
+  const handleJobCreation = async (e) => {
+    e.preventDefault();
+    console.log("here");
+    const newJob = {
+      ...job,
+      criteriaList,
+    };
+
+    try {
+      await createJob(newJob);
+    } catch (error) {
+      console.log("error creating job");
+    }
+  };
+
   return (
     <>
       <PageTitle title="Criar vaga" />
-      <form>
+      <form onSubmit={handleJobCreation}>
         <h3>Descrição</h3>
         <Input
           labelText="Cargo"
@@ -99,8 +125,11 @@ export const OpenPosition = () => {
         />
 
         <h3>Critérios</h3>
-        <NewCriteriaLine />
-        <Button buttonText="Publicar vaga" />
+        <NewCriteriaLine
+          criteriaList={criteriaList}
+          setCriteriaList={setCriteriaList}
+        />
+        <Button type="submit" buttonText="Publicar vaga" />
       </form>
     </>
   );

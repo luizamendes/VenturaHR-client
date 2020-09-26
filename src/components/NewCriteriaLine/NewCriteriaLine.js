@@ -1,20 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { Input } from "../../components/Input";
 import { GrAddCircle } from "react-icons/gr";
 import { generateId } from "../../utils";
 import "./index.scss";
 
-export const NewCriteriaLine = () => {
-  const [criteria] = useState({
-    id: generateId(),
-    name: "",
-    description: "",
-    profile: "1",
-    weigth: "1",
-  });
-
-  const [criteriaList, setCriteriaList] = useState([criteria]);
-
+export const NewCriteriaLine = ({ criteriaList, setCriteriaList }) => {
   const handleAddLine = (e) => {
     e.preventDefault();
     const newCriteriaList = [...criteriaList];
@@ -84,7 +74,7 @@ export const NewCriteriaLine = () => {
           </select>
         </td>
         <td>
-          <button onClick={handleAddLine}>
+          <button type="button" onClick={handleAddLine}>
             <GrAddCircle />
           </button>
         </td>
