@@ -16,8 +16,8 @@ export const OpenPosition = () => {
     city: "",
     state: "",
     contractType: "",
-    contractTime: "",
-    jobDue: "",
+    contractDuration: "",
+    openUntil: "",
   });
   const [criteria] = useState({
     id: generateId(),
@@ -112,15 +112,15 @@ export const OpenPosition = () => {
         <Input
           labelText="Período de contratação"
           type="text"
-          name="contractTime"
-          value={contractTime}
+          name="contractDuration"
+          value={contractDuration}
           onChange={onChange}
         />
         <Input
           labelText="Data limite"
           type="text"
-          name="jobDue"
-          value={jobDue}
+          name="openUntil"
+          value={openUntil}
           onChange={onChange}
         />
 
