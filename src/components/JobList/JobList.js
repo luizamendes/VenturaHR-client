@@ -1,12 +1,11 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { jobs } from "../../mocks/jobs";
-import "./index.scss";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './index.scss';
 
-export const JobList = ({ title }) => {
-  const renderJob = ({ id, job, description, city }) => (
+export const JobList = ({ title, jobs }) => {
+  const renderJob = ({ id, name, description, city }) => (
     <Link className="job-list__row" key={id}>
-      <div>{job}</div>
+      <div>{name}</div>
       <div>{description}</div>
       <div>{city}</div>
     </Link>
@@ -20,7 +19,7 @@ export const JobList = ({ title }) => {
         <div>Descrição</div>
         <div>Cidade</div>
       </div>
-      {jobs.map(renderJob)}
+      {jobs && jobs.map(renderJob)}
     </div>
   );
 };
