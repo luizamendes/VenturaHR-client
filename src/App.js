@@ -9,7 +9,7 @@ import "./App.scss";
 import { Dashboard } from "./pages/Dashboard";
 import { Home } from "./pages/Home";
 import { Register } from "./pages/Register";
-import { OpenPosition } from "./pages/OpenPosition";
+import { CreateJob } from "./pages/CreateJob";
 import { NotFound } from "./pages/NotFound";
 
 function App() {
@@ -23,7 +23,7 @@ function App() {
               <Route exact path="/" component={Home} />
               <Route exact path="/registro" component={Register} />
               <Route exact path="/dashboard" component={Dashboard} />
-              <Route exact path="/cadastrar-vaga" component={OpenPosition} />
+              <Route exact path="/cadastrar-vaga" component={CreateJob} />
               <Route path="*" component={NotFound} />
             </Switch>
           </Main>

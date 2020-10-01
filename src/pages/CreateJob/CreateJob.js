@@ -8,7 +8,7 @@ import { createJob } from "../../api/job";
 
 import "./index.scss";
 
-export const OpenPosition = () => {
+export const CreateJob = () => {
   const [job, setJob] = useState({
     name: "",
     description: "",
@@ -27,7 +27,7 @@ export const OpenPosition = () => {
     weigth: "1",
   });
   const [criteriaList, setCriteriaList] = useState([criteria]);
-  console.log("OpenPosition -> criteriaList", criteriaList);
+  console.log("CreateJob -> criteriaList", criteriaList);
 
   const {
     name,
@@ -36,8 +36,8 @@ export const OpenPosition = () => {
     city,
     state,
     contractType,
-    contractTime,
-    jobDue,
+    contractDuration,
+    openUntil,
   } = job;
 
   const onChange = (e) => {
