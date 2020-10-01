@@ -29,9 +29,9 @@ export const Dashboard = () => {
       <div className="content-row">
         <Cardbox title="Suas vagas">
           {jobs.slice(0, 3).map((job) => (
-            <p>{job.job}</p>
+            <p key={job.id}>{job.name}</p>
           ))}
-          <Link>Ver todas</Link>
+          <Link to="/minhas-vagas">Ver todas</Link>
         </Cardbox>
         <Cardbox title="Mensagens do sistema">
           <p>Não há mensagens do sistema</p>
