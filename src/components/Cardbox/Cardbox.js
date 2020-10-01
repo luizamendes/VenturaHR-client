@@ -1,5 +1,5 @@
-import React from "react";
-import "./index.scss";
+import React from 'react';
+import './index.scss';
 
 export const Cardbox = ({ children, title, ...props }) => {
   return (

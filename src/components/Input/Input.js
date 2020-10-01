@@ -1,5 +1,5 @@
-import React from "react";
-import "./index.scss";
+import React from 'react';
+import './index.scss';
 
 export const Input = ({ labelText, options, ...props }) => {
   const { type, name } = props;
@@ -7,7 +7,7 @@ export const Input = ({ labelText, options, ...props }) => {
   return (
     <label className="label">
       {labelText}
-      {type === "radio" ? (
+      {type === 'radio' ? (
         <div className="input__radio-group">
           {options.map((option, index) => {
             return (

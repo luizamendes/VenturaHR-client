@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { Authentication } from '../../components/Authentication';
 import { JobList } from '../../components/JobList';
 import { StoreContext } from '../../store';
 import { fetchLatestJobs } from '../../api/job';
-import { toast } from 'react-toastify';
 import './index.scss';
 
 export const Home = () => {
