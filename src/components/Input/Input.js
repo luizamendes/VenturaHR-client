@@ -1,13 +1,14 @@
 import React from 'react';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import './index.scss';
 
-export const Input = ({ labelText, options, ...props }) => {
+export const Input = ({ labelText, options, date, ...props }) => {
   const { type, name } = props;
 
-  return (
-    <label className="label">
-      {labelText}
-      {type === 'radio' ? (
+  const renderInput = () => {
+    if (type === 'radio') {
+      return (
         <div className="input__radio-group">
           {options.map((option, index) => {
             return (
@@ -25,9 +26,27 @@ export const Input = ({ labelText, options, ...props }) => {
             );
           })}
         </div>
-      ) : (
-        <input className="input" {...props} />
-      )}
+      );
+    }
+
+    if (date) {
+      return (
+        <DatePicker
+          dateFormat="dd/MM/yyyy"
+          className="input"
+          selected={date}
+          {...props}
+        />
+      );
+    }
+
+    return <input className="input" {...props} />;
+  };
+
+  return (
+    <label className="label">
+      {labelText}
+      {renderInput()}
     </label>
   );
 };

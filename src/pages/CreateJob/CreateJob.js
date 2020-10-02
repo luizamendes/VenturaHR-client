@@ -1,33 +1,34 @@
-import React, { useState } from "react";
-import { Button } from "../../components/Button";
-import { Input } from "../../components/Input";
-import { NewCriteriaLine } from "../../components/NewCriteriaLine";
-import { PageTitle } from "../../components/PageTitle";
-import { generateId } from "../../utils";
-import { createJob } from "../../api/job";
+import React, { useState } from 'react';
+import { Button } from '../../components/Button';
+import { Input } from '../../components/Input';
+import { NewCriteriaLine } from '../../components/NewCriteriaLine';
+import { PageTitle } from '../../components/PageTitle';
+import { generateId } from '../../utils';
+import { createJob } from '../../api/job';
+import { toast } from 'react-toastify';
+import DatePicker from 'react-datepicker';
 
-import "./index.scss";
+import './index.scss';
 
 export const CreateJob = () => {
+  const [endDate, setEndDate] = useState(new Date());
   const [job, setJob] = useState({
-    name: "",
-    description: "",
-    company: "",
-    city: "",
-    state: "",
-    contractType: "",
-    contractDuration: "",
-    openUntil: "",
+    name: '',
+    description: '',
+    company: '',
+    city: '',
+    state: '',
+    contractType: '',
+    contractDuration: '',
   });
   const [criteria] = useState({
     id: generateId(),
-    name: "",
-    description: "",
-    profile: "1",
-    weigth: "1",
+    name: '',
+    description: '',
+    profile: '1',
+    weigth: '1',
   });
   const [criteriaList, setCriteriaList] = useState([criteria]);
-  console.log("CreateJob -> criteriaList", criteriaList);
 
   const {
     name,
@@ -37,7 +38,6 @@ export const CreateJob = () => {
     state,
     contractType,
     contractDuration,
-    openUntil,
   } = job;
 
   const onChange = (e) => {
@@ -49,16 +49,16 @@ export const CreateJob = () => {
 
   const handleJobCreation = async (e) => {
     e.preventDefault();
-    console.log("here");
     const newJob = {
       ...job,
+      openUntil: endDate,
       criteriaList,
     };
 
     try {
       await createJob(newJob);
     } catch (error) {
-      console.log("error creating job");
+      toast.error('Erro ao criar vaga', error.message);
     }
   };
 
@@ -120,10 +120,9 @@ export const CreateJob = () => {
           labelText="Data limite"
           type="text"
           name="openUntil"
-          value={openUntil}
-          onChange={onChange}
+          date={endDate}
+          onChange={(date) => setEndDate(date)}
         />
-
         <h3>Critérios</h3>
         <NewCriteriaLine
           criteriaList={criteriaList}

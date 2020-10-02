@@ -32,6 +32,7 @@ export const Dashboard = () => {
             <p key={job.id}>{job.name}</p>
           ))}
           <Link to="/minhas-vagas">Ver todas</Link>
+          <Link to="/cadastrar-vaga">Criar vaga</Link>
         </Cardbox>
         <Cardbox title="Mensagens do sistema">
           <p>Não há mensagens do sistema</p>

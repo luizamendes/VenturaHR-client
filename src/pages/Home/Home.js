@@ -34,7 +34,7 @@ export const Home = () => {
   return (
     <div className="home">
       <section className="home__latest">
-        <JobList title="Últimas vagas" latestJobs={latestJobs} />
+        <JobList title="Últimas vagas" jobs={latestJobs} />
       </section>
       <section className="home__login">
         <Authentication />
