@@ -6,7 +6,6 @@ import { PageTitle } from '../../components/PageTitle';
 import { generateId } from '../../utils';
 import { createJob } from '../../api/job';
 import { toast } from 'react-toastify';
-import DatePicker from 'react-datepicker';
 
 import './index.scss';
 
@@ -57,6 +56,7 @@ export const CreateJob = () => {
 
     try {
       await createJob(newJob);
+      toast.success('Vaga criada com sucesso');
     } catch (error) {
       toast.error('Erro ao criar vaga', error.message);
     }
