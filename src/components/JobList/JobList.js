@@ -2,9 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './index.scss';
 
-export const JobList = ({ title, jobs }) => {
+export const JobList = ({ title, jobs, onClick }) => {
   const renderJob = ({ id, name, description, city }) => (
-    <Link className="job-list__row" key={id}>
+    <Link
+      className="job-list__row"
+      key={id}
+      to={`/vaga/${id}`}
+      onClick={onClick}
+    >
       <div>{name}</div>
       <div>{description}</div>
       <div>{city}</div>

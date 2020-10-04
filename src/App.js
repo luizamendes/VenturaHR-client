@@ -14,6 +14,8 @@ import { Register } from './pages/Register';
 import { CreateJob } from './pages/CreateJob';
 import { NotFound } from './pages/NotFound';
 import { PublishedJobs } from './pages/PublishedJobs';
+import { JobDetails } from './pages/JobDetails';
+import { Logout } from './pages/Logout';
 
 function App() {
   return (
@@ -28,6 +30,8 @@ function App() {
               <Route exact path="/dashboard" component={Dashboard} />
               <Route exact path="/cadastrar-vaga" component={CreateJob} />
               <Route exact path="/minhas-vagas" component={PublishedJobs} />
+              <Route exact path="/vaga/:id" component={JobDetails} />
+              <Route exact path="/logout" component={Logout} />
               <Route path="*" component={NotFound} />
             </Switch>
           </Main>

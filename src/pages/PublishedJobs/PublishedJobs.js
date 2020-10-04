@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { fetchCompanyJobs } from '../../api/job';
+import { Button } from '../../components/Button';
 import { JobList } from '../../components/JobList';
 import { PageTitle } from '../../components/PageTitle';
 import './index.scss';
@@ -33,6 +34,7 @@ export const PublishedJobs = () => {
     <>
       <PageTitle title="Minhas vagas" />
       {renderJobs()}
+      <Button buttonText="Cadastrar nova vaga" link="/cadastrar-vaga" />
     </>
   );
 };

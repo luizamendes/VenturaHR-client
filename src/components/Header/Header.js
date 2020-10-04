@@ -2,7 +2,6 @@ import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { Menu, MenuItem } from '@material-ui/core';
-
 import { StoreContext } from '../../store';
 import './index.scss';
 
@@ -19,9 +18,8 @@ export const Header = () => {
     setAnchorEl(null);
   };
 
-  const logout = () => {
-    localStorage.clear();
-    history.push('/');
+  const handleRedirect = (path) => {
+    history.push(path);
     handleClose();
   };
 
@@ -48,23 +46,13 @@ export const Header = () => {
         open={!!anchorEl}
         onClose={handleClose}
       >
-        <MenuItem
-          onClick={() => {
-            history.push('/dashboard');
-            handleClose();
-          }}
-        >
+        <MenuItem onClick={() => handleRedirect('/dashboard')}>
           Dashboard
         </MenuItem>
-        <MenuItem
-          onClick={() => {
-            history.push('/minhas-vagas');
-            handleClose();
-          }}
-        >
+        <MenuItem onClick={() => handleRedirect('/minhas-vagas')}>
           Minhas vagas
         </MenuItem>
-        <MenuItem onClick={logout}>Logout</MenuItem>
+        <MenuItem onClick={() => handleRedirect('/logout')}>Logout</MenuItem>
       </Menu>
     </header>
   );
