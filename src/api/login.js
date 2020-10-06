@@ -1,6 +1,5 @@
-import { client } from "./client";
+import { client } from './client';
 
-const login = (email, password, loginType = "Empresa") =>
-  client.post("/login", { email, password, loginType });
+const login = (email, password) => client.post('/login', { email, password });
 
 export { login };

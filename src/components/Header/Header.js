@@ -10,7 +10,7 @@ export const Header = () => {
   const history = useHistory();
   const [anchorEl, setAnchorEl] = useState(null);
 
-  const handleClick = (event) => {
+  const handleClick = event => {
     setAnchorEl(event.currentTarget);
   };
 
@@ -18,7 +18,7 @@ export const Header = () => {
     setAnchorEl(null);
   };
 
-  const handleRedirect = (path) => {
+  const handleRedirect = path => {
     history.push(path);
     handleClose();
   };

@@ -8,7 +8,6 @@ import './index.scss';
 export const JobDetails = props => {
   const { id } = useParams();
   const [job, setJob] = useState(props.job);
-  console.log('JobDetails -> job', job);
 
   useEffect(() => {
     const fetchJob = async () => {
@@ -61,12 +60,12 @@ export const JobDetails = props => {
         <p>
           <strong>Disponível até:</strong> {openUntil}
         </p>
-        <p>
+        <div>
           <strong>Critérios</strong>
           {criteriaList.map(({ id, name, description, profile, weigth }) => (
             <p key={id}>{`${name}: ${description}`}</p>
           ))}
-        </p>
+        </div>
       </>
     );
   };

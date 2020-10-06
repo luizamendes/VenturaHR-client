@@ -11,7 +11,7 @@ const initialState = {
 function reducer(state, action) {
   switch (action.type) {
     case 'SET_USER':
-      return { ...state, user: action.payload };
+      return { ...state, user: { ...action.payload } };
     case 'SET_TOKEN':
       return { ...state, authToken: action.payload };
     case 'CLEAR_STORE':
