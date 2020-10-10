@@ -1,18 +1,16 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { doSaveUser } from '../../store/actions';
+import { doSaveUser, doSaveToken } from '../../store/actions';
 import { useHistory } from 'react-router-dom';
 import { Button } from '../Button';
 import { Input } from '../Input';
 import { login } from '../../api/login';
-import { StoreContext } from '../../store';
 import './index.scss';
 
 export const Authentication = () => {
   const [user, setUser] = useState({ email: '', password: '' });
   const history = useHistory();
-  const [, dispatch] = useContext(StoreContext);
-  const dispatchs = useDispatch();
+  const dispatch = useDispatch();
 
   const onChange = e => {
     const { name, value } = e.target;
@@ -29,8 +27,8 @@ export const Authentication = () => {
       const { user: loggedUser, token } = data;
       console.log('handleLoginRequest -> storageUser', loggedUser);
 
-      dispatch({ type: 'SET_USER', payload: loggedUser });
-      dispatchs(doSaveUser(loggedUser));
+      dispatch(doSaveUser(loggedUser));
+      dispatch(doSaveToken(token));
       localStorage.setItem('user', JSON.stringify(loggedUser));
       localStorage.setItem('tkn', token);
       history.push('/dashboard');

@@ -1,6 +1,6 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { StoreContext } from '../../store';
+import { useSelector } from 'react-redux';
 import { Button } from '../../components/Button';
 import { Input } from '../../components/Input';
 import { NewCriteriaLine } from '../../components/NewCriteriaLine';
@@ -11,7 +11,7 @@ import { toast } from 'react-toastify';
 import { jobInputs, button } from './CreateJob.module.scss';
 
 export const CreateJob = () => {
-  const [{ user }] = useContext(StoreContext);
+  const user = useSelector(state => state.user);
   const history = useHistory();
   const [endDate, setEndDate] = useState(new Date());
   const [job, setJob] = useState({

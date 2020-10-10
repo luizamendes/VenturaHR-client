@@ -1,14 +1,15 @@
-import { useEffect, useContext } from 'react';
+import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { StoreContext } from '../../store';
+import { useDispatch } from 'react-redux';
+import { doClearStore } from '../../store/actions';
 
 export const Logout = () => {
   const history = useHistory();
-  const [, dispatch] = useContext(StoreContext);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     localStorage.clear();
-    dispatch({ type: 'CLEAR_STORE' });
+    dispatch(doClearStore());
     history.push('/');
   }, [dispatch, history]);
 

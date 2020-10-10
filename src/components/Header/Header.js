@@ -1,15 +1,14 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Menu, MenuItem } from '@material-ui/core';
-import { StoreContext } from '../../store';
 import './index.scss';
 
 export const Header = () => {
-  const [{ user }] = useContext(StoreContext);
   const history = useHistory();
   const [anchorEl, setAnchorEl] = useState(null);
-
+  const user = useSelector(state => state.user);
   const handleClick = event => {
     setAnchorEl(event.currentTarget);
   };

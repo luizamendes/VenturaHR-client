@@ -1,5 +1,6 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
+import { useSelector } from 'react-redux';
 import {
   fetchAllJobs,
   fetchCompanyJobs,
@@ -11,7 +12,6 @@ import { Cardbox } from '../../components/Cardbox';
 import { JobList } from '../../components/JobList';
 import { PageTitle } from '../../components/PageTitle';
 import { Search } from '../../components/Search';
-import { StoreContext } from '../../store';
 import './index.scss';
 
 export const Dashboard = () => {
@@ -19,7 +19,7 @@ export const Dashboard = () => {
   const [userJobs, setUserJobs] = useState([]);
   const [searchValue, setSearchValue] = useState('');
   const [jobListTitle, setJobListTitle] = useState('Todas as vagas');
-  const [{ user }] = useContext(StoreContext);
+  const user = useSelector(state => state.user);
 
   const fetchLatest = async () => {
     try {

@@ -8,4 +8,9 @@ const doSaveToken = token => ({
   payload: token,
 });
 
-export { doSaveUser, doSaveToken };
+const doClearStore = token => ({
+  type: 'CLEAR_STORE',
+  payload: token,
+});
+
+export { doSaveUser, doSaveToken, doClearStore };

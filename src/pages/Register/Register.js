@@ -1,10 +1,11 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { doSaveUser, doSaveToken } from '../../store/actions';
 import { Button } from '../../components/Button';
 import { Input } from '../../components/Input';
 import { PageTitle } from '../../components/PageTitle';
 import { registerUser } from '../../api/user';
-import { StoreContext } from '../../store';
 import { toast } from 'react-toastify';
 
 export const Register = () => {
@@ -32,7 +33,7 @@ export const Register = () => {
     companyName: { invalid: false, reason: '' },
   });
   const history = useHistory();
-  const [, dispatch] = useContext(StoreContext);
+  const dispatch = useDispatch();
 
   const onChange = e => {
     const { value, name } = e.target;
@@ -96,7 +97,8 @@ export const Register = () => {
       const { data } = await registerUser(user);
       const { user: loggedUser, token } = data;
 
-      dispatch({ type: 'SET_USER', payload: loggedUser });
+      dispatch(doSaveUser(loggedUser));
+      dispatch(doSaveToken(token));
       localStorage.setItem('user', JSON.stringify(loggedUser));
       localStorage.setItem('tkn', token);
       history.push('/dashboard');

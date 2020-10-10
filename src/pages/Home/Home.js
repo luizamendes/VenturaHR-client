@@ -1,15 +1,15 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { Authentication } from '../../components/Authentication';
 import { JobList } from '../../components/JobList';
-import { StoreContext } from '../../store';
 import { fetchLatestJobs } from '../../api/job';
 import './index.scss';
 
 export const Home = () => {
   const [latestJobs, setLatestJobs] = useState([]);
-  const [{ user }] = useContext(StoreContext);
+  const user = useSelector(state => state.user);
   const history = useHistory();
   const arrUser = Object.entries(user);
 
