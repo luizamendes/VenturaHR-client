@@ -2,7 +2,7 @@ import React, { createContext, useReducer } from 'react';
 import PropTypes from 'prop-types';
 
 const initialState = {
-  user: JSON.parse(localStorage.getItem('user2')) || {},
+  user: JSON.parse(localStorage.getItem('user')) || {},
   authToken: localStorage.getItem('tkn') || '',
 };
 

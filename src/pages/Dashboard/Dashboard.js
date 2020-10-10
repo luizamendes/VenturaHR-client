@@ -74,11 +74,13 @@ export const Dashboard = () => {
           <JobList jobs={userJobs.slice(0, 3)} hideHeader noDecoration />
           <div className="my-jobs__actions">
             <Button link="/minhas-vagas" kind="link" buttonText="Ver todas" />
-            <Button
-              link="/cadastrar-vaga"
-              kind="link"
-              buttonText="Criar vaga"
-            />
+            {user.accountType === 'Empresa' && (
+              <Button
+                link="/cadastrar-vaga"
+                kind="link"
+                buttonText="Criar vaga"
+              />
+            )}
           </div>
         </Cardbox>
       </div>

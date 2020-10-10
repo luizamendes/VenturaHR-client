@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './index.scss';
 
 export const JobList = ({ title, jobs, onClick, hideHeader, noDecoration }) => {
-  const renderJob = ({ id, name, description, city }) => (
+  const renderJob = ({ id, name, description, company, city }) => (
     <Link
       className={`job-list__row ${
         noDecoration ? 'job-list__row--no-deco' : ''
@@ -14,6 +14,7 @@ export const JobList = ({ title, jobs, onClick, hideHeader, noDecoration }) => {
     >
       <div>{name}</div>
       <div>{description}</div>
+      <div>{company}</div>
       <div>{city}</div>
     </Link>
   );
@@ -25,6 +26,7 @@ export const JobList = ({ title, jobs, onClick, hideHeader, noDecoration }) => {
         <div className="job-list__header job-list__row">
           <div>Cargo</div>
           <div>Descrição</div>
+          <div>Empresa</div>
           <div>Cidade</div>
         </div>
       )}

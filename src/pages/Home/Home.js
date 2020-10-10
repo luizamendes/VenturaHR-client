@@ -13,8 +13,7 @@ export const Home = () => {
   const history = useHistory();
   const arrUser = Object.entries(user);
 
-  // TODO: Improve this trashy logic
-  if (arrUser && arrUser[0] && arrUser[0][0] === 'name' && !!arrUser[0][1]) {
+  if (arrUser.length) {
     history.push('/dashboard');
   }
 
