@@ -1,4 +1,6 @@
 import React, { useState, useContext } from 'react';
+import { useDispatch } from 'react-redux';
+import { doSaveUser } from '../../store/actions';
 import { useHistory } from 'react-router-dom';
 import { Button } from '../Button';
 import { Input } from '../Input';
@@ -10,6 +12,7 @@ export const Authentication = () => {
   const [user, setUser] = useState({ email: '', password: '' });
   const history = useHistory();
   const [, dispatch] = useContext(StoreContext);
+  const dispatchs = useDispatch();
 
   const onChange = e => {
     const { name, value } = e.target;
@@ -27,6 +30,7 @@ export const Authentication = () => {
       console.log('handleLoginRequest -> storageUser', loggedUser);
 
       dispatch({ type: 'SET_USER', payload: loggedUser });
+      dispatchs(doSaveUser(loggedUser));
       localStorage.setItem('user', JSON.stringify(loggedUser));
       localStorage.setItem('tkn', token);
       history.push('/dashboard');
