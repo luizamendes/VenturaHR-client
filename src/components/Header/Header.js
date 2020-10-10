@@ -35,25 +35,27 @@ export const Header = () => {
 
   return (
     <header className="header">
-      <Link to="/">
-        <h1>VenturaHR</h1>
-      </Link>
-      {renderGreetings()}
-      <Menu
-        id="simple-menu"
-        anchorEl={anchorEl}
-        keepMounted
-        open={!!anchorEl}
-        onClose={handleClose}
-      >
-        <MenuItem onClick={() => handleRedirect('/dashboard')}>
-          Dashboard
-        </MenuItem>
-        <MenuItem onClick={() => handleRedirect('/minhas-vagas')}>
-          Minhas vagas
-        </MenuItem>
-        <MenuItem onClick={() => handleRedirect('/logout')}>Logout</MenuItem>
-      </Menu>
+      <div className="header__content">
+        <Link to="/">
+          <h1>VenturaHR</h1>
+        </Link>
+        {renderGreetings()}
+        <Menu
+          id="simple-menu"
+          anchorEl={anchorEl}
+          keepMounted
+          open={!!anchorEl}
+          onClose={handleClose}
+        >
+          <MenuItem onClick={() => handleRedirect('/dashboard')}>
+            Dashboard
+          </MenuItem>
+          <MenuItem onClick={() => handleRedirect('/minhas-vagas')}>
+            Minhas vagas
+          </MenuItem>
+          <MenuItem onClick={() => handleRedirect('/logout')}>Logout</MenuItem>
+        </Menu>
+      </div>
     </header>
   );
 };

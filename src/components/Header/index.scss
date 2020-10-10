@@ -1,15 +1,13 @@
 @import '../../style/variables';
 
 .header {
-  display: flex;
-  align-items: center;
-  background-color: grey;
-  height: $header-height;
-  padding: 0 $app-padding;
-  justify-content: space-between;
+  width: 100%;
+  background-color: #fff;
+  border-bottom: 1px solid $main-color;
 
   h1 {
     margin: 0;
+    color: $main-color;
   }
 
   a {
@@ -21,5 +19,17 @@
     font-size: 1.2em;
     font-weight: bold;
     cursor: pointer;
+  }
+
+  &__content {
+    display: flex;
+    height: $header-height;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 90rem;
+    margin: 0 auto;
+    padding: 0 $app-padding;
+    flex-grow: 1;
   }
 }

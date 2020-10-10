@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { fetchAllJobs } from '../../api/job';
+import { Button } from '../../components/Button';
 import { Cardbox } from '../../components/Cardbox';
 import { JobList } from '../../components/JobList';
 import { PageTitle } from '../../components/PageTitle';
@@ -27,18 +28,19 @@ export const Dashboard = () => {
     <>
       <PageTitle title="Dashboard" />
       <div className="content-row">
-        <Cardbox title="Suas vagas">
-          {jobs.slice(0, 3).map((job) => (
-            <p key={job.id}>{job.name}</p>
-          ))}
-          <Link to="/minhas-vagas">Ver todas</Link>
-          <Link to="/cadastrar-vaga">Criar vaga</Link>
-        </Cardbox>
-        <Cardbox title="Mensagens do sistema">
-          <p>Não há mensagens do sistema</p>
+        <Cardbox title="Suas vagas" className="my-jobs">
+          <JobList jobs={jobs.slice(0, 3)} hideHeader noDecoration />
+          <div className="my-jobs__actions">
+            <Button link="/minhas-vagas" kind="link" buttonText="Ver todas" />
+            <Button
+              link="/cadastrar-vaga"
+              kind="link"
+              buttonText="Criar vaga"
+            />
+          </div>
         </Cardbox>
       </div>
-      <JobList jobs={jobs} />
+      <JobList title="Todas as vagas" jobs={jobs} />
     </>
   );
 };

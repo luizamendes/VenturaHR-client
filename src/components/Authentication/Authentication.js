@@ -54,7 +54,7 @@ export const Authentication = () => {
       </div>
       <div className="authentication__register">
         <h3>Ainda não possuo conta</h3>
-        <Button link="/registro" buttonText="Criar conta" />
+        <Button link="/registro" kind='secondary' buttonText="Criar conta" />
       </div>
     </div>
   );

@@ -1,9 +1,11 @@
-@import "../../style/variables";
+@import '../../style/variables';
 
 footer {
   display: flex;
   justify-content: center;
   align-items: center;
   height: $footer-height;
-  background-color: #f0f0f0;
+  font-weight: bold;
+  color: white;
+  background-color: $main-color;
 }

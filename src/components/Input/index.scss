@@ -1,7 +1,14 @@
+@import '../../style//variables';
+
 .label {
   display: block;
   width: 100%;
   margin-bottom: 1rem;
+  font-weight: bold;
+
+  &.invalid {
+    color: $invalid-color;
+  }
 }
 
 .input {
@@ -12,14 +19,26 @@
   padding: 0.5rem;
   margin: 0.5rem 0;
 
+  &.invalid {
+    background-color: transparentize($invalid-color, 0.9);
+    border: 1px solid $invalid-color;
+  }
+
   &__radio-group {
     display: flex;
-    margin-top: 0.5rem;
+    margin-top: 0.75rem;
 
     > div {
       margin-right: 0.5rem;
     }
   }
+}
+
+.invalid-text {
+  color: $invalid-color;
+  margin: 0;
+  font-size: 0.8em;
+  font-weight: normal;
 }
 
 .react-datepicker-wrapper {

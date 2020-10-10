@@ -2,3 +2,13 @@
   display: flex;
   justify-content: space-between;
 }
+
+.my-jobs {
+  margin-bottom: 2rem;
+
+  &__actions {
+    display: flex;
+    margin-top: 1rem;
+    justify-content: center;
+  }
+}

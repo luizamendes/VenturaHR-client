@@ -1,21 +1,36 @@
-@import "../../style/variables";
+@import '../../style/variables';
 
 .job-list {
   & h3 {
     margin-top: 0;
   }
 
-  &__header {
-    margin-bottom: 0.5rem;
-    font-weight: bold;
-  }
-
   &__row {
     display: flex;
+    align-items: center;
+    background-color: #fff;
     border: 1px solid black;
-    padding: 0.5rem;
+    padding: 1rem 0.5rem;
     text-decoration: none;
     color: inherit;
+    margin-bottom: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid $light-grey;
+
+    &:hover {
+      font-weight: bold;
+      border-color: $main-color;
+    }
+
+    &:last-of-type:not(.job-list__header) {
+      margin-bottom: 0;
+    }
+
+    &--no-deco {
+      border: 0;
+      margin-bottom: 0;
+      padding: 0.5rem;
+    }
 
     & div {
       //   width: 33%;
@@ -28,5 +43,12 @@
         flex-grow: 2;
       }
     }
+  }
+
+  &__header {
+    border: 1px solid $main-color;
+    color: $main-color;
+    margin-bottom: 0.75rem;
+    font-weight: bold;
   }
 }

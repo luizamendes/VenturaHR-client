@@ -2,10 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './index.scss';
 
-export const JobList = ({ title, jobs, onClick }) => {
+export const JobList = ({ title, jobs, onClick, hideHeader, noDecoration }) => {
   const renderJob = ({ id, name, description, city }) => (
     <Link
-      className="job-list__row"
+      className={`job-list__row ${
+        noDecoration ? 'job-list__row--no-deco' : ''
+      }`}
       key={id}
       to={`/vaga/${id}`}
       onClick={onClick}
@@ -19,11 +21,13 @@ export const JobList = ({ title, jobs, onClick }) => {
   return (
     <div className="job-list">
       <h3>{title}</h3>
-      <div className="job-list__header job-list__row">
-        <div>Cargo</div>
-        <div>Descrição</div>
-        <div>Cidade</div>
-      </div>
+      {!hideHeader && (
+        <div className="job-list__header job-list__row">
+          <div>Cargo</div>
+          <div>Descrição</div>
+          <div>Cidade</div>
+        </div>
+      )}
       {jobs && jobs.map(renderJob)}
     </div>
   );
