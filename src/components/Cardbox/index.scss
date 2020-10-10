@@ -1,9 +1,12 @@
+@import '../../style/variables';
+
 .cardbox {
   padding: 1rem 0.5rem;
   width: 100%;
   background-color: #fff;
   border-radius: 5px;
-  border: 1px solid black;
+  border: 1px solid $main-color;
+  margin-bottom: 1rem;
 
   &__title {
     margin-top: 0;

@@ -24,9 +24,10 @@ export const Authentication = () => {
     try {
       const { data } = await login(email, password);
       const { user: loggedUser, token } = data;
+      console.log('handleLoginRequest -> storageUser', loggedUser);
 
       dispatch({ type: 'SET_USER', payload: loggedUser });
-      localStorage.setItem('user', loggedUser.name);
+      localStorage.setItem('user', JSON.stringify(loggedUser));
       localStorage.setItem('tkn', token);
       history.push('/dashboard');
     } catch (error) {
@@ -54,7 +55,7 @@ export const Authentication = () => {
       </div>
       <div className="authentication__register">
         <h3>Ainda não possuo conta</h3>
-        <Button link="/registro" kind='secondary' buttonText="Criar conta" />
+        <Button link="/registro" kind="secondary" buttonText="Criar conta" />
       </div>
     </div>
   );

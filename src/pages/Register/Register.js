@@ -31,7 +31,6 @@ export const Register = () => {
     cnpj: { invalid: false, reason: '' },
     companyName: { invalid: false, reason: '' },
   });
-  const [formReady, setFormReady] = useState(false);
   const history = useHistory();
   const [, dispatch] = useContext(StoreContext);
 
@@ -98,7 +97,7 @@ export const Register = () => {
       const { user: loggedUser, token } = data;
 
       dispatch({ type: 'SET_USER', payload: loggedUser });
-      localStorage.setItem('user', loggedUser.name);
+      localStorage.setItem('user', JSON.stringify(loggedUser));
       localStorage.setItem('tkn', token);
       history.push('/dashboard');
     } catch (error) {

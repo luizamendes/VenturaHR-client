@@ -1,0 +1,23 @@
+@import '../../style/variables';
+
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.button {
+  width: auto;
+  margin-left: 0.5rem;
+  padding: 0.75rem;
+}
+
+.title {
+  font-weight: bold;
+  margin-top: 0;
+}
+
+.input {
+  font-size: 1em;
+  margin: 0;
+}
