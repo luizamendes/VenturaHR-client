@@ -4,7 +4,7 @@ import { fetchCompanyJobs } from '../../api/job';
 import { Button } from '../../components/Button';
 import { JobList } from '../../components/JobList';
 import { PageTitle } from '../../components/PageTitle';
-import './index.scss';
+import { button } from './PublishedJobs.module.scss';
 
 export const PublishedJobs = () => {
   const [myJobs, setMyJobs] = useState([]);
@@ -34,7 +34,11 @@ export const PublishedJobs = () => {
     <>
       <PageTitle title="Minhas vagas" />
       {renderJobs()}
-      <Button buttonText="Cadastrar nova vaga" link="/cadastrar-vaga" />
+      <Button
+        className={button}
+        buttonText="Cadastrar nova vaga"
+        link="/cadastrar-vaga"
+      />
     </>
   );
 };

@@ -58,8 +58,8 @@ export const CreateJob = () => {
     };
 
     try {
-      await createJob(newJob);
-      toast.success('Vaga criada com sucesso');
+      const { data } = await createJob(newJob);
+      history.push(`/vaga/${data.id}`);
     } catch (error) {
       toast.error('Erro ao criar vaga', error.message);
     }
