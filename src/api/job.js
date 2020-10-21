@@ -2,7 +2,7 @@ import { privateClient, client } from './client';
 
 const createJob = job => privateClient.post('/company/jobs', { job });
 
-const fetchLatestJobs = () => client.get('/jobs/latest');
+const fetchLatestJobs = () => client.get('/jobs/latest/10');
 
 const fetchCompanyJobs = () => privateClient.get('/company/jobs');
 
