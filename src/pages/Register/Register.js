@@ -139,7 +139,7 @@ export const Register = () => {
           invalidText={invalidFields.phone.reason}
         />
         <Input
-          labelText="Email"
+          labelText="Email (*)"
           name="email"
           type="text"
           onChange={onChange}
