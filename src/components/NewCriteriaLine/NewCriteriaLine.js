@@ -1,27 +1,27 @@
-import React from "react";
-import { Input } from "../../components/Input";
-import { GrAddCircle } from "react-icons/gr";
-import { generateId } from "../../utils";
-import "./index.scss";
+import React from 'react';
+import { Input } from '../../components/Input';
+import { GrAddCircle } from 'react-icons/gr';
+import { generateId } from '../../utils';
+import './index.scss';
 
 export const NewCriteriaLine = ({ criteriaList, setCriteriaList }) => {
-  const handleAddLine = (e) => {
+  const handleAddLine = e => {
     e.preventDefault();
     const newCriteriaList = [...criteriaList];
     newCriteriaList.push({
       id: generateId(),
-      name: "",
-      description: "",
+      name: '',
+      description: '',
       profile: 1,
-      weigth: 3,
+      weight: 3,
     });
     setCriteriaList(newCriteriaList);
   };
 
-  const onChange = (e) => {
+  const onChange = e => {
     const { name, value } = e.target;
-    const [param, criteriaId] = name.split("-");
-    const newCriteriaList = criteriaList.map((criteria) => {
+    const [param, criteriaId] = name.split('-');
+    const newCriteriaList = criteriaList.map(criteria => {
       if (criteria.id === criteriaId) {
         criteria[param] = value;
       }
@@ -32,7 +32,7 @@ export const NewCriteriaLine = ({ criteriaList, setCriteriaList }) => {
     setCriteriaList([...newCriteriaList]);
   };
 
-  const renderCriteriaLine = ({ id, name, description, profile, weigth }) => {
+  const renderCriteriaLine = ({ id, name, description, profile, weight }) => {
     return (
       <tr key={id} className="new-criteria__line">
         <td>
@@ -61,10 +61,10 @@ export const NewCriteriaLine = ({ criteriaList, setCriteriaList }) => {
         </td>
         <td>
           <select
-            defaultValue={weigth}
+            defaultValue={weight}
             className="select"
             onChange={onChange}
-            name={`weigth-${id}`}
+            name={`weight-${id}`}
           >
             <option>1</option>
             <option>2</option>

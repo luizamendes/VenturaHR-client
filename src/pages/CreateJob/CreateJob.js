@@ -28,7 +28,7 @@ export const CreateJob = () => {
     name: '',
     description: '',
     profile: '1',
-    weigth: '1',
+    weight: '1',
   });
   const [criteriaList, setCriteriaList] = useState([criteria]);
 
@@ -49,12 +49,21 @@ export const CreateJob = () => {
     setJob({ ...newJob });
   };
 
+  const setCriteriaWeightAndProfile = () => {
+    return criteriaList.map(criteria => {
+      criteria.weight = +criteria.weight;
+      criteria.profile = +criteria.profile;
+
+      return criteria;
+    });
+  };
+
   const handleJobCreation = async e => {
     e.preventDefault();
     const newJob = {
       ...job,
       openUntil: endDate,
-      criteriaList,
+      criteriaList: setCriteriaWeightAndProfile(),
     };
 
     try {

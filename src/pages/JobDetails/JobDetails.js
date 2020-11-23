@@ -2,12 +2,18 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { fetchJobById } from '../../api/job';
+import { fetchApplicationsByJobId } from '../../api/application';
+import { Button } from '../../components/Button';
 import { PageTitle } from '../../components/PageTitle';
 import './index.scss';
 
 export const JobDetails = props => {
   const { id } = useParams();
   const [job, setJob] = useState(props.job);
+  const [applications, setApplications] = useState([]);
+  const [showApplications, setShowApplications] = useState(false);
+  const [buttonText, setButtonText] = useState('Mostrar candidaturas');
+  const [buttonKind, setButtonKind] = useState('primary');
 
   useEffect(() => {
     const fetchJob = async () => {
@@ -23,6 +29,56 @@ export const JobDetails = props => {
       fetchJob();
     }
   }, [id, props.job]);
+
+  const handleGetApplications = async () => {
+    if (showApplications) {
+      setButtonText('Mostrar candidaturas');
+      setShowApplications(false);
+      setButtonKind('primary');
+      return;
+    }
+
+    try {
+      const { data } = await fetchApplicationsByJobId(id);
+      console.log('data', data);
+      setApplications(data);
+      setShowApplications(true);
+      setButtonKind('secondary');
+      setButtonText('Esconder candidaturas');
+    } catch (error) {
+      toast.error('Erro ao obter candidaturas');
+    }
+  };
+
+  const renderPMD = () => {
+    return (
+      <p>
+        <strong>PMD da vaga:</strong> {job.average}
+      </p>
+    );
+  };
+
+  const renderApplications = () => {
+    if (applications.length === 0) {
+      return <p>Essa vaga ainda não possui candidaturas</p>;
+    }
+
+    return applications.map(application => {
+      return (
+        <div className="application__result">
+          <p>
+            <span>Candidato:</span> {application.applicant.name}
+          </p>
+          <p>
+            <span>E-mail:</span> {application.applicant.email}
+          </p>
+          <p>
+            <span>Resultado da aplicação:</span> {application.result}
+          </p>
+        </div>
+      );
+    });
+  };
 
   const renderJobDetails = () => {
     if (!job) return null;
@@ -62,10 +118,21 @@ export const JobDetails = props => {
         </p>
         <div>
           <strong>Critérios</strong>
-          {criteriaList.map(({ id, name, description, profile, weigth }) => (
+          {criteriaList.map(({ id, name, description, profile, weight }) => (
             <p key={id}>{`${name}: ${description}`}</p>
           ))}
         </div>
+        <Button
+          kind={buttonKind}
+          buttonText={buttonText}
+          onClick={handleGetApplications}
+        />
+        {showApplications ? (
+          <>
+            {renderPMD()}
+            {renderApplications()}
+          </>
+        ) : null}
       </>
     );
   };
